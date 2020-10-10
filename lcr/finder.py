@@ -12,6 +12,15 @@ def get_sys_word_list():
             dictionary.append(line.strip())
     return dictionary
 
+def get_word_list():
+    """ Makes a list of all words found in the system dictionary file """
+    dictionary = list()
+    with open("words.txt", "r") as f:
+        for line in f.readlines():
+            dictionary.append(line.strip())
+    return dictionary
+
+
 def read_crypttext():
     crypttext = list()
     with open("LCR.txt", "r") as f:
@@ -61,7 +70,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     skip = 26
-    valid_words = get_sys_word_list()
+    valid_words = get_word_list()
     if args.file:
         """ Process the cyphertext file """
         crypttext = read_crypttext()
